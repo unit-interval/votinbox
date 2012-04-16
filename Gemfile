@@ -10,7 +10,7 @@ gem "bson_ext", "~> 1.5"
 # in production environments by default.
 group :assets do
   # gem 'twitter-bootstrap-rails', "~> 2.0.6"
-  gem 'less', '~> 2.1.0'
+  # gem 'less', '~> 2.1.0'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes

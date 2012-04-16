@@ -1,14 +1,71 @@
 <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <html>
 <head>
-  <title>Votinbox</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  	<title>Votinbox</title>
+	<meta name="description" content="Votin’ Box is a pioneer solution to the lack of live online voting systems for educational organizations.">
+	<meta name="author" content="Unit Interval Studio">
+	<meta name="viewport" content="width=device-width">
+	<%= stylesheet_link_tag "application", :media => "all" %>
+	
+	<%= csrf_meta_tags %>
 </head>
 <body>
+	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+	<body>
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a class="brand" href="/">VotinBox</a>
+					<% if session[:user_id] %>
+					<a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<div class="container-fluid nav-collapse">
+						<ul class="nav">
+						</ul>
+					</div><!--/.nav-collapse -->
+					<% else %>
+						<%= link_to "Login", "/login", :class => "btn btn-primary pull-right" %>
+					<% end %>
+				</div>
+			</div>
+		</div>
 
-<%= yield %>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+			<% if flash[:notice] %>
+				<div class="alert">
+					<a class="close" data-dismiss="alert">×</a>
+					<strong>Notice!</strong> <%= flash[:notice] %>
+				</div>
+			<% end %>
+			</div>
+		</div>
+		
+		<%= yield %>
+
+		<footer class="footer">
+			<div class="page">
+				<p class="pull-right"><a href="#">Back to top</a></p>
+				<p>Copyright 2012 Unit Interval Studio</p>
+			</div>
+		</footer>
+
+	</div> <!-- /container -->
+
+	<!-- Le javascript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<%= javascript_include_tag "application" %>
 
 </body>
 </html>
