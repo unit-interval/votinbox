@@ -1,0 +1,23 @@
+<% if event == 'new' %>
+
+<div class="thumbnail">
+	<%= image_tag("placehold-it.gif")%>
+	<div class="caption">
+		<a href="#" class="btn btn-mini btn-primary pull-right disabled">Create New</a>
+		<h5>To be avaiable</h5>
+	</div>
+</div>
+
+<% else %>
+
+<div class="thumbnail">
+	<%= image_tag("cmu.jpg")%>
+	<div class="caption">
+		<a href="/cmusummit2012" class="btn btn-mini btn-success pull-right">Vote</a>
+		<a href="/cmusummit2012" class="btn btn-mini btn-danger pull-right">Edit</a>
+		<a href="/cmusummit2012" class="btn btn-mini btn-primary pull-right">Enter</a>
+		<h5>CMU Summit New Venture Competition, 2012</h5>
+	</div>
+</div>
+
+<% end %>

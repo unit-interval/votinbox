@@ -17,48 +17,65 @@
 </head>
 <body>
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-	<body>
-		<div class="navbar">
-			<div class="navbar-inner">
-				<div class="container-fluid">
-					<a class="brand" href="/">VotinBox</a>
-					<% if session[:user_id] %>
-					<a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</a>
-					<div class="container-fluid nav-collapse">
-						<ul class="nav">
-						</ul>
-					</div><!--/.nav-collapse -->
-					<% else %>
-						<%= link_to "Login", "/login", :class => "btn btn-primary pull-right" %>
-					<% end %>
-				</div>
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="/">Votinbox</a>
+				<a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<div class="nav-collapse">
+					<ul class="nav pull-right">
+						<% if session[:user_id] %>
+						<li><%= link_to "Dashboard", board_path %></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">cmusummit<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a data-toggle="modal" href="#modal-account" >Account Setting</a>
+								</li>
+								<li>
+									<%= link_to "Sign out", "logout"%>
+								</li>
+							</ul>
+						</li>
+						<% else %>
+						<li>
+							<a data-toggle="modal" href="#modal-login" >Login</a>
+						</li>
+						<% end %>							
+					</ul>
+				</div><!--/.nav-collapse -->
 			</div>
 		</div>
+	</div>
+	
+	<%= render :partial => 'index/login' %>
 
 	<div class="container-fluid">
+		<% if flash[:notice] %>
 		<div class="row-fluid">
 			<div class="span12">
-			<% if flash[:notice] %>
 				<div class="alert">
 					<a class="close" data-dismiss="alert">×</a>
 					<strong>Notice!</strong> <%= flash[:notice] %>
 				</div>
-			<% end %>
 			</div>
 		</div>
-		
+		<% end %>
+
 		<%= yield %>
 
-		<footer class="footer">
-			<div class="page">
-				<p class="pull-right"><a href="#">Back to top</a></p>
-				<p>Copyright 2012 Unit Interval Studio</p>
+		<div class="footer">
+			<div class="row-fluid">
+				<div class="span12">
+					<p class="pull-right"><a href="#">Back to top</a></p>
+					<p>Copyright 2012 Unit Interval Studio</p>
+				</div>
 			</div>
-		</footer>
+		</div>
 
 	</div> <!-- /container -->
 

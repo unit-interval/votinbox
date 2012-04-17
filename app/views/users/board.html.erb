@@ -1,0 +1,12 @@
+<div id="board">
+	<div class="row-fluid">
+		<div class="span6">
+			<%= render :partial => 'events/thumbnail', :locals => { :event => 'new' } %>
+		</div>
+		<div class="span6">
+			<%= render :partial => 'events/thumbnail', :locals => { :event => 'cmu' } %>
+		</div>
+	</div>
+</div>
+
+<%= render :partial => 'users/account' %>

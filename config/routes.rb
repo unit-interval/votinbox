@@ -48,8 +48,13 @@ Votinbox::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'index#index'
 
+  root :to => 'index#index'
+  
+  get 'board', :controller => "users"
+
+  get 'cmusummit2012', :controller => "events", :action => "show"
+  
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
